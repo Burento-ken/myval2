@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffcccb;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            width: 100%;
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ff5c5c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .button:hover {
+            background: #ff1c1c;
+        }
+
+        #noButton {
+            position: absolute;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                width: 90%;
+            }
+
+            .button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const noButton = document.getElementById("noButton");
+            const form = document.querySelector("form");
+            function moveButton() {
+                const maxX = form.offsetWidth - noButton.offsetWidth;
+                const maxY = form.offsetHeight - noButton.offsetHeight;
+                const randomX = Math.floor(Math.random() * maxX);
+                const randomY = Math.floor(Math.random() * maxY);
+                noButton.style.left = randomX + "px";
+                noButton.style.top = randomY + "px";
+            }
+            moveButton(); // Set initial position
+            noButton.addEventListener("mouseover", moveButton);
+        });
+    </script>
+</head>
+<body>
+    <form action="valentines.php" method="get">
+        <label>Will you be my valentine?</label>
+        <img src="images.png" alt="Valentine Image">
+        <a href="http://127.0.0.1:5500/prank.html" class="button">Yes</a>
+        <button type="button" class="button" id="noButton">No</button>
+    </form>
+</body>
+</html>
